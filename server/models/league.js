@@ -8,11 +8,6 @@ module.exports=(sequelize,type)=>{
         leagueName:{
             type: type.STRING,
             notEmpty: true,
-        },
-        password:{
-            type:type.STRING,
-            notEmpty:true,
-            len:[6],
         }
     })
 }

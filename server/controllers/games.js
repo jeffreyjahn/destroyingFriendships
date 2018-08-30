@@ -5,7 +5,20 @@ module.exports={
     //creating game
     getGames :(req,res)=>{
         console.log("Finding all games!");
-        Game.findAll({}).then(games=>{
+        Game.findAll({
+            include:[{
+                model:Stat,
+                include:[{
+                    model:Player,
+                    through:{
+                        attributes:['statId','playerId']
+                    }
+                }],
+                through:{
+                    attributes:['gameId','statId']
+                }
+            }]
+        }).then(games=>{
             if (games.length>0){
                 console.log("Found all games!");
                 console.log(games);

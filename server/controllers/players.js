@@ -6,7 +6,6 @@ module.exports={
         Player.findAll({
             include:[{
                 model:League,
-                attributes: { exclude: ['password'] },
                 through:{
                     attributes:['leagueId','playerId']
                 }
@@ -74,19 +73,16 @@ module.exports={
     joinLeague:(req,res)=>{
         League.find({where:{id:req.params.league_id}}).then(league=>{
             console.log(league);
-            Player.find({where:{id:req.params.player_id}}).then(player=>{
-                bcrypt.compare(req.body.password, league[0].password)
-                    .then( result => {
-                        if(result){
-                            player.addLeague(league);
-                            return res.json({success:"Player joined the league"})
-                        } else{
-                            return res.json({errors:"Password is incorrect."});
-                        }
-                    })
-                    .catch( error => {
-                    })
-            })
+            if (league.length > 0){
+                Player.find({where:{id:req.params.player_id}}).then(player=>{
+                    if(player.length>0){
+                        player.addLeague(league);
+                        return res.json({success:"Player joined the league"})
+                    } else{
+                        return res.json({errors:"Password is incorrect."});
+                    }
+                })
+            }
         })
     }
 }
