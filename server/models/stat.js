@@ -5,6 +5,11 @@ module.exports=(sequelize,type)=>{
             primaryKey:true,
             autoIncrement:true,
         },
+        team:{
+            type: type.INTEGER,
+            min:1,
+            max:2
+        },
         quarter:{
             type: type.INTEGER,
             min:1,

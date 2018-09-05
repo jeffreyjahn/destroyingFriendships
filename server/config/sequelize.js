@@ -23,11 +23,11 @@ const Game = GameModel(sequelize, Sequelize);
 const Stat = StatModel(sequelize, Sequelize);
 const PlayerLeague = sequelize.define('PlayerLeague',{});
 //creating relationships in sequelize
-Game.belongsTo(League);
+League.hasMany(Game,{as: 'Games'});
 Player.belongsToMany(League,{ through: 'PlayerLeague' });
 League.belongsToMany(Player,{ through: 'PlayerLeague' });
-Stat.belongsTo(Game);
-Stat.belongsTo(Player);
+Game.hasMany(Stat, {as:'GameStats'});
+Player.hasMany(Stat,{as:'PlayerStats'});
 
 //if force is true it will reinitialize the tables!! USE WHEN CHANGING MODELS
 sequelize.sync({ force: false })
