@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const PlayerModel = require('./../models/player.js');
-const LeagueModel = require('./../models/league.js');
-const GameModel = require('./../models/game.js');
-const StatModel = require('./../models/stat.js')
+const PlayerModel = require('../models/player.js');
+const LeagueModel = require('../models/league.js');
+const GameModel = require('../models/game.js');
+const StatModel = require('../models/stat.js')
 
 const sequelize = new Sequelize('destroying_friendships', 'root', 'root', {
     host: 'localhost',

@@ -1,11 +1,11 @@
 module.exports=(sequelize,type)=>{
     return sequelize.define('league',{
-        id:{
+        id: {
             type:type.INTEGER,
             primaryKey:true,
             autoIncrement:true,
         },
-        leagueName:{
+        leagueName: {
             type: type.STRING,
             notEmpty: true,
         }

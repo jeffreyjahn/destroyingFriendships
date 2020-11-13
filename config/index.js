@@ -6,33 +6,41 @@ convict.addFormat(require('convict-format-with-validator').ipaddress);
 var config = convict({
   env: {
     doc: 'The application environment.',
-    format: ['production', 'development', 'test'],
-    default: 'development',
+    format: ['prod', 'dev', 'test'],
+    default: 'dev',
     env: 'NODE_ENV'
   },
   ip: {
     doc: 'The IP address to bind.',
     format: 'ipaddress',
-    default: '127.0.0.1',
+    default: 'localhost',
     env: 'IP_ADDRESS',
   },
   port: {
     doc: 'The port to bind.',
     format: 'port',
-    default: 8080,
+    default: 3000,
     env: 'PORT',
     arg: 'port'
   },
-  db: {
+  postgres: {
     host: {
       doc: 'Database host name/IP',
       format: '*',
-      default: 'server1.dev.test'
+      default: 'localhost',
+      env: 'IP_ADDRESS'
     },
     name: {
       doc: 'Database name',
       format: String,
-      default: 'users'
+      default: 'users',
+      env: 'PG_NAME'
+    },
+    port: {
+      doc: 'Database port',
+      format: 'int',
+      default: 5432,
+      env: 'PG_PORT'
     }
   }
 });

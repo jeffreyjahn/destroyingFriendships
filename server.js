@@ -16,8 +16,8 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, './public/dist/public/')));
 
-require('./server/config/sequelize.js');
-require('./server/config/routes.js')(app);
+require('./server_OLD/config/sequelize.js');
+require('./server/routes/routes.js')(app);
 
 
 app.listen(9999, ()=>{

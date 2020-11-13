@@ -1,11 +1,12 @@
 const player = require('../controllers/players');
 const game = require('../controllers/games');
-const league = require('../controllers/leagues');
+const league = require('../controllers/');
 const stat =require('../controllers/stats');
 const path = require('path');
 
-module.exports=(app)=>{
-    //league routes    
+module.exports = (app) => {
+    //league routes
+    app.use('/api/leagues', )    
     app.get('/api/leagues',(req,res)=>{
         league.allLeagues(req,res);
     })
